@@ -1,7 +1,5 @@
 package br.com.vini.cursojava.resources;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +18,10 @@ public class CategoriaResources {
 		@Autowired
 		private CategoriaService service;
 		
-		
+		//essa classe é a classe rest que comunica com http
 		@RequestMapping(value="/{id}", method=RequestMethod.GET)
 		public ResponseEntity<?> find(@PathVariable Integer id) {
-			
+		
 			Categoria obj = service.find(id);			
 			return ResponseEntity.ok().body(obj);
 			

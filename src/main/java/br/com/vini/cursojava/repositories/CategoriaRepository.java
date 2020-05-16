@@ -7,6 +7,6 @@ import br.com.vini.cursojava.domain.Categoria;
 @Repository
 public interface CategoriaRepository  extends JpaRepository<Categoria, Integer>{
 	
-	
+	// esta classe ele cria para obter acesso a Dados 
 
 }

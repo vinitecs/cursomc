@@ -7,7 +7,7 @@ import br.com.vini.cursojava.domain.Produto;
 
 @Repository
 public interface ProdutoRepository  extends JpaRepository<Produto, Integer>{
-	
+	// esta classe ele cria para obter acesso a Dados 
 	
 
 }
