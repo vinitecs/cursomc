@@ -16,7 +16,7 @@ import br.com.vini.cursojava.services.CategoriaService;
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaResources {
-		// ele cria instância  da classe serviço p
+		// ele cria instância  da classe serviço 
 		@Autowired
 		private CategoriaService service;
 		
