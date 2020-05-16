@@ -16,9 +16,11 @@ import br.com.vini.cursojava.services.CategoriaService;
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaResources {
+		// ele cria instância  da classe serviço p
 		@Autowired
 		private CategoriaService service;
-	
+		
+		
 		@RequestMapping(value="/{id}", method=RequestMethod.GET)
 		public ResponseEntity<?> find(@PathVariable Integer id) {
 			
