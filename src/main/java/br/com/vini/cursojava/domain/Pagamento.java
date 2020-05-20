@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 
 import br.com.vini.cursojava.domain.enums.EstadoPagamento;
 @Entity
+//incherance ele junta duas classes filhas  onde colocamos a estrategia de junção JOINED
 @Inheritance(strategy = InheritanceType.JOINED)
 //é importante ressltar que a classe abustrata não faz instância é uma herança
 //e classe statica executa independente se possui um retorno

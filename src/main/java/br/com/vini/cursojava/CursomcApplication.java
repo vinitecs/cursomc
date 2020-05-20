@@ -13,6 +13,7 @@ import br.com.vini.cursojava.domain.Cidade;
 import br.com.vini.cursojava.domain.Cliente;
 import br.com.vini.cursojava.domain.Endereco;
 import br.com.vini.cursojava.domain.Estado;
+import br.com.vini.cursojava.domain.ItemPedido;
 import br.com.vini.cursojava.domain.Pagamento;
 import br.com.vini.cursojava.domain.PagamentoComBoleto;
 import br.com.vini.cursojava.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import br.com.vini.cursojava.repositories.CidadeRepository;
 import br.com.vini.cursojava.repositories.ClienteRepository;
 import br.com.vini.cursojava.repositories.EnderecoRepository;
 import br.com.vini.cursojava.repositories.EstadoRepository;
+import br.com.vini.cursojava.repositories.ItemPedidoRepository;
 import br.com.vini.cursojava.repositories.PagamentoRepository;
 import br.com.vini.cursojava.repositories.PedidoRepository;
 import br.com.vini.cursojava.repositories.ProdutoRepository;
@@ -54,6 +56,9 @@ public class CursomcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -124,6 +129,18 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1,ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pgto1,pgto2));
+		
+	
+		ItemPedido ip1 = new ItemPedido(ped1,p1, 0.00, 1, 2000.0);
+		ItemPedido ip2 = new ItemPedido(ped1,p3,0.00,2,80.00);
+		ItemPedido ip3 = new ItemPedido(ped2,p2,100.00,1,800.00);
+		
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip3));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
 		
 	}
 
