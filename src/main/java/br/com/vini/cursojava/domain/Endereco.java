@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 public class Endereco implements Serializable{
 	
@@ -24,12 +27,14 @@ public class Endereco implements Serializable{
 	private String cep;
 	
 	//essa taga ela impede uma serialização ciclica 
-	@JsonBackReference
+	
 	//@ManytoOne é associação de muitos para um 
 	//@joinColumn vai criar uma coluna de associação de clientes  na tabela endereço
-		@ManyToOne
+	@JsonBackReference
+	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")

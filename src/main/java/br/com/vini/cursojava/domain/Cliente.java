@@ -13,12 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.vini.cursojava.domain.enums.TipoCliente;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Cliente implements Serializable{
@@ -37,22 +36,23 @@ public class Cliente implements Serializable{
 		
 		
 		//Coleção da classe endereço onde a classe pessoa possui  um endereço
-		@JsonManagedReference
+	
 		@OneToMany(mappedBy = "cliente")
 		private List<Endereco> enderecos = new ArrayList<>();
 		
 		
-		@OneToMany(mappedBy = "cliente")
-		private List<Pedido> pedidos = new ArrayList<>();
-		
-		
 
-		//Coleção de Strings que não vai ter repetição 
-		@ElementCollection
+		
+		@ElementCollection  //Coleção de Strings que não vai ter repetição 
 		//no banco ele cria tabela telefone  com cliente _id
 		@CollectionTable(name="TELEFONE")
 		//a coleção Set ele não possui varios telefones
 		private Set<String> telefones = new HashSet<>();
+		
+		
+		@JsonBackReference
+		@OneToMany(mappedBy = "cliente")
+		private List<Pedido> pedidos = new ArrayList<>();
 		
 		public Cliente() {
 			

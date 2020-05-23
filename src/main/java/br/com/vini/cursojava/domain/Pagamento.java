@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.vini.cursojava.domain.enums.EstadoPagamento;
 @Entity
 //incherance ele junta duas classes filhas  onde colocamos a estrategia de junção JOINED
@@ -24,10 +27,10 @@ public abstract class Pagamento implements Serializable{
 	private Integer id;
 	private Integer estado;
 	
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name="pedido_id")
-	//ele cria o mesmo ID junto com  pedido 
-	@MapsId
+	@MapsId //ele cria o mesmo ID junto com  pedido 
 	private Pedido pedido;
 
 	public Pagamento() {
